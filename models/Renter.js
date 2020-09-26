@@ -5,7 +5,7 @@ const Renter = new Schema(
 {
   Renter_id: string,
   Renter_name: string,
-  Contact_no.:{
+  Contact_no:{
    type: Number,
    required: true,
    },
