@@ -5,7 +5,7 @@ const Tenant = new Schema(
 {
   Tenant_id: string,
   Tenant_name: string,
-  Contact_no.:{
+  Contact_no:{
    type: Number,
    required: true,
    },
