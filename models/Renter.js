@@ -3,13 +3,22 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const Renter = new Schema(
 {
-  Renter_id: string,
-  Renter_name: string,
+  Renter_id:{
+    type: String,
+    required: true
+    },
+  Renter_name:{
+    type: String,
+    required: true
+    },
   Contact_no:{
    type: Number,
    required: true,
    },
-  Address: string,
+  Address:{
+    type: String,
+    required: true
+    },
   Amount_recieved: {
    type: Number
    }
