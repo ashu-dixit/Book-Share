@@ -23,7 +23,6 @@ passport.use(
 
     }, (accessToken, refreshToken, Profile, done) => {
         console.log(Profile);
-
         users.findOne({
                 googleid: Profile.id
             })

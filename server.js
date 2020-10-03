@@ -24,14 +24,12 @@ app.use(passport.session())
 
 app.use(morgan('tiny'))
 
-const MongoClient = require('mongodb').MongoClient;
-const uri = keys.mongodb.MONGODB_URI;
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-client.connect(err => {
-    const collection = client.db("test").collection("devices");
-    // perform actions on the collection object
-    client.close();
+const MONGODB_URI = keys.mongodb.MONGODB_URI
+mongoose.connect(MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
 })
+
 app.use('/', express.static(path.join(__dirname, 'basicUI')))
 app.use('/login', require('./routes/passport').route)
 
