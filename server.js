@@ -25,7 +25,7 @@ app.use(passport.session())
 app.use(morgan('tiny'))
 
 const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://<ashu>:<ashu>@cluster0.mloyr.mongodb.net/<bookshare>?retryWrites=true&w=majority";
+const uri = keys.mongodb.MONGODB_URI;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 client.connect(err => {
     const collection = client.db("test").collection("devices");
