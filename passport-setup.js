@@ -41,12 +41,7 @@ passport.use(
                     const newUser = new users(data)
 
                     // saving data
-                    newUser.save(error => {
-                        if (error)
-                            console.log('Ooops, Something Happened' + error)
-                        else
-                            console.log('Data is saved')
-                    }).then(newUser => {
+                    newUser.save().then(newUser => {
                         console.log('new user created');
                         done(null, newUser)
                     })
