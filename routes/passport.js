@@ -12,11 +12,13 @@
 
  route.get('/google/redirect', passport.authenticate('google'), (req, res) => {
      // res.send('you reached a callback url')
-     res.redirect('http://127.0.0.1:3000')
+     res.redirect('http://127.0.0.1:3300')
          // res.send(req.user)
  })
  route.get('/user', (req, res) => {
      res.send(req.user)
  })
 
- exports = module.exports = route
+ exports = module.exports = {
+     route
+ }
