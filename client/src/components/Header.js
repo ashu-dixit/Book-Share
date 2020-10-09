@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   AppBar,
@@ -8,6 +8,10 @@ import {
   Typography,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
+import {fetchUsername} from '../redux/user/userAction'
+import { useSelector } from "react-redux/lib/hooks/useSelector";
+import { useDispatch } from "react-redux/lib/hooks/useDispatch";
+import Axios from "axios";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -20,7 +24,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 function Header(props) {
+  const data = useSelector(state => state.user)
+  const dispatch = useDispatch()
   const classes = useStyles();
+  const loginWith = () => {
+    Axios.get('/login')
+  }
+  const userIcon = () => {
+    console.log(data);
+    switch (data){
+      case null: return <div>loading...</div>
+      case false: return <Button color="inherit" onClick={() => { loginWith() }}>Login</Button>
+      default: return <div>Logout</div>
+    }
+  }
+  useEffect(() => dispatch(fetchUsername()),[])
   return (
     <AppBar position="static">
       <Toolbar>
@@ -35,10 +53,10 @@ function Header(props) {
         <Typography variant="h6" className={classes.title}>
           Books
         </Typography>
-        <Button color="inherit">Login</Button>
+          {userIcon()}
       </Toolbar>
     </AppBar>
   );
 }
 
-export default Header;
+export default Header

@@ -32,5 +32,6 @@ mongoose.connect(MONGODB_URI, {
 
 app.use('/', express.static(path.join(__dirname, 'basicUI')))
 app.use('/login', require('./routes/passport').route)
+app.use('/profile', require('./routes/mainRout').route)
 
 app.listen(PORT, () => console.log('Server has started'))

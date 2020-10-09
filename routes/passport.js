@@ -1,6 +1,8 @@
  const passport = require('passport')
  const route = require('express').Router()
-
+ route.get('/', (req, res) => {
+     res.redirect('/login/google')
+ })
  route.get('/logout', (req, res) => {
      req.logout()
      res.send(req.user)
