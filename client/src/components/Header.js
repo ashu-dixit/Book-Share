@@ -24,6 +24,7 @@ import MyBooks from "./MyBooks";
 import { blue, green } from "@material-ui/core/colors";
 import { Provider } from "react-redux";
 import store from "../redux/store";
+import Menu from "./Menu";
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -133,62 +134,7 @@ export default function Header(props) {
             <UserIcon />
           </Toolbar>
         </AppBar>
-        <Drawer
-          className={classes.drawer}
-          variant="persistent"
-          anchor="left"
-          open={open}
-          classes={{
-            paper: classes.drawerPaper,
-          }}
-        >
-          <div className={classes.drawerHeader}>
-            <IconButton onClick={handleDrawerClose}>
-              {theme.direction === "ltr" ? (
-                <ChevronLeftIcon />
-              ) : (
-                <ChevronRightIcon />
-              )}
-            </IconButton>
-          </div>
-          <Divider />
-          <List>
-            {["My Books", "Profile", "Upload Books", "Drafts"].map(
-              (text, index) => (
-                <NavLink
-                  key={text}
-                  to="/mybooks"
-                  activeClassName={classes.active_class}
-                  className={classes.linktag}
-                >
-                  <ListItem button>
-                    <ListItemIcon>
-                      {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                    </ListItemIcon>
-                    <ListItemText primary={text} />
-                  </ListItem>
-                </NavLink>
-              )
-            )}
-          </List>
-          <Divider />
-          <List>
-            {["All mail", "Trash", "Spam"].map((text, index) => (
-              <NavLink
-                to="/"
-                activeClassName={classes.active_class}
-                className={classes.linktag}
-              >
-                <ListItem button key={text}>
-                  <ListItemIcon>
-                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                  </ListItemIcon>
-                  <ListItemText primary={text} />
-                </ListItem>
-              </NavLink>
-            ))}
-          </List>
-        </Drawer>
+        <Menu handleDrawerClose = {handleDrawerClose} open = {open}/>
         <main
           className={clsx(classes.content, {
             [classes.contentShift]: open,
@@ -197,7 +143,7 @@ export default function Header(props) {
           <div className={classes.drawerHeader} />
           <Provider store={store}>
             <Switch>
-              <Route exact path="/" component={Profile} />
+              <Route exact path="/profile" component={Profile} />
               <Route exact path="/mybooks" component={MyBooks} />
             </Switch>
           </Provider>
