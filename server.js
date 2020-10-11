@@ -18,7 +18,7 @@ app.use(cookieSession({
     maxAge: 6 * 60 * 60 * 1000,
     keys: [keys.session.key]
 }))
-
+ 
 app.use(passport.initialize())
 app.use(passport.session())
 
@@ -33,5 +33,7 @@ mongoose.connect(MONGODB_URI, {
 app.use('/', express.static(path.join(__dirname, 'basicUI')))
 app.use('/login', require('./routes/passport').route)
 app.use('/profile', require('./routes/mainRout').route)
+app.use('/books', require('./routes/book').route)
 
-app.listen(PORT, () => console.log('Server has started'))
+
+app.listen(PORT, () => console.log('Server has started'))  

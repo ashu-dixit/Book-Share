@@ -5,7 +5,7 @@ export const fetchUsername = () => {
 
         axios.get('/login/user')
             .then((user) => {
-                console.log(user.headers + "hello");
+                console.log(user + " User Action");
                 dispatch({
                    type: 'GET_USER',
                     payload: user.data,

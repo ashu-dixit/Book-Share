@@ -1,5 +1,5 @@
 const route = require('express').Router()
 
-route.get('/user', require('./user').route)
+route.use('/book', require('./book').route)
 
 exports = module.exports = {route}
