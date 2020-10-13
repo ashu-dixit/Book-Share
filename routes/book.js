@@ -11,9 +11,7 @@ route.get("/", (req, res) => {
 });
 
 route.get("/home", (req, res) => {
-    Books.find({
-        UserID : req.user._id
-    }).then(response => {
+    Books.find().limit(10).then(response => {
         res.send(response);
     })
 })

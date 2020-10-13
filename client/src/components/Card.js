@@ -91,7 +91,7 @@ export default function BookCard(props) {
           <ExpandMoreIcon />
         </IconButton>
       </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
+      {/* <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography paragraph>Method:</Typography>
           <Typography paragraph>
@@ -117,7 +117,7 @@ export default function BookCard(props) {
             Set aside off of the heat to let rest for 10 minutes, and then serve.
           </Typography>
         </CardContent>
-      </Collapse>
+      </Collapse> */}
     </Card>
   );
 }

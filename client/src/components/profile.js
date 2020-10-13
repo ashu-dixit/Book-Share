@@ -1,11 +1,19 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector, useStore } from "react-redux";
-import { fetchUsername } from "../redux/user/userAction";
+import { useSelector } from "react-redux";
 
 export default function ButtonAppBar(props) {
-  const data = useStore()
-  console.log(data + " Ashu");
-  return <div>
-    Ashu
-  </div>;
+  const data = useSelector((state) => state.user);
+
+  const ProfileData = () => {
+    switch (data) {
+      case null:
+        return "Loading....";
+      case false:
+        return "Login first";
+      default:
+        return <div> {data.name}</div>;
+    }
+  };
+
+  return ProfileData();
 }

@@ -7,7 +7,6 @@ import Axios from "axios";
 function UserIcon(props) {
   const data = useSelector((state) => state.user);
   const dispatch = useDispatch();
-  // console.log(data); 
   const loginWith = () => {
     Axios.get("/login/google");
   };
@@ -50,8 +49,6 @@ function UserIcon(props) {
               open={Boolean(anchorEl)}
               onClose={handleClose}
             >
-              {/* <MenuItem onClick={handleClose}>Profile</MenuItem>
-              <MenuItem onClick={handleClose}>My account</MenuItem> */}
               <MenuItem onClick={logouthandle}>Logout</MenuItem>
             </Menu>
           </div>
