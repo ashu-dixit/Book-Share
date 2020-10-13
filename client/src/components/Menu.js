@@ -9,11 +9,11 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
+import Home from "@material-ui/icons/Home";
 import MailIcon from "@material-ui/icons/Mail";
-import { NavLink} from "react-router-dom";
-import Books from '@material-ui/icons/Book';
-import Profile from '@material-ui/icons/AccountBox';
+import { NavLink } from "react-router-dom";
+import Books from "@material-ui/icons/Book";
+import Profile from "@material-ui/icons/AccountBox";
 
 const drawerWidth = 240;
 
@@ -101,45 +101,57 @@ export default function Menu(props) {
       </div>
       <Divider />
       <List>
-            <NavLink
-              to="/mybooks"
-              activeClassName={classes.active_class}
-              className={classes.linktag}
-            >
-              <ListItem button>
-                <ListItemIcon>
-                  <Books />
-                </ListItemIcon>
-                <ListItemText primary={"My Books"} />
-              </ListItem>
-            </NavLink>
-            <NavLink
-              to="/profile"
-              activeClassName={classes.active_class}
-              className={classes.linktag}
-            >
-              <ListItem button>
-                <ListItemIcon>
-                    <Profile/>
-                </ListItemIcon>
-                <ListItemText primary={"Profile"} />
-              </ListItem>
-            </NavLink>
+        <NavLink
+          to="/"
+          activeClassName={classes.active_class}
+          className={classes.linktag}
+        >
+          <ListItem button>
+            <ListItemIcon>
+              <Home/>
+            </ListItemIcon>
+            <ListItemText primary={"Home"} />
+          </ListItem>
+        </NavLink>
+        <NavLink
+          to="/mybooks"
+          activeClassName={classes.active_class}
+          className={classes.linktag}
+        >
+          <ListItem button>
+            <ListItemIcon>
+              <Books />
+            </ListItemIcon>
+            <ListItemText primary={"My Books"} />
+          </ListItem>
+        </NavLink>
+        <NavLink
+          to="/profile"
+          activeClassName={classes.active_class}
+          className={classes.linktag}
+        >
+          <ListItem button>
+            <ListItemIcon>
+              <Profile />
+            </ListItemIcon>
+            <ListItemText primary={"Profile"} />
+          </ListItem>
+        </NavLink>
       </List>
       <Divider />
       <List>
-          <NavLink
-            to="/"
-            activeClassName={classes.active_class}
-            className={classes.linktag}
-          >
-            <ListItem button>
-              <ListItemIcon>
-                <Books/>
-              </ListItemIcon>
-              <ListItemText primary={"Upload Book"} />
-            </ListItem>
-          </NavLink>
+        <NavLink
+          to="/upload"
+          activeClassName={classes.active_class}
+          className={classes.linktag}
+        >
+          <ListItem button>
+            <ListItemIcon>
+              <Books />
+            </ListItemIcon>
+            <ListItemText primary={"Upload Book"} />
+          </ListItem>
+        </NavLink>
       </List>
     </Drawer>
   );

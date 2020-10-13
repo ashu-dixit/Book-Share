@@ -13,12 +13,9 @@
  }))
 
  route.get('/google/redirect', passport.authenticate('google'), (req, res) => {
-     // res.send('you reached a callback url')
      res.redirect('http://127.0.0.1:3000')
-         // res.send(req.user)
  }) 
  route.get('/user', (req, res) => {
-     console.log(req.user + " /login/user")
      res.send(req.user)
  })
 
