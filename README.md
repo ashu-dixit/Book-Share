@@ -68,7 +68,7 @@ In this project we have planned to use a waterfall model, initially we had devel
 
 **Use Case:** A use case diagram at its simplest is a representation of a user&#39;s interaction with the system that shows the relationship between the user and the different use cases in which the user is involved. Our use case diagram will consist of renter, tenant, admin and payment as actor
 
-![](RackMultipart20201031-4-16iqwhj_html_ba808b73963e8cc2.png)
+![](https://github.com/ashu-dixit/Book-Share/blob/master/basicUI/Untitled%20Document.png)
 
 **Database:** Choosing databases is the trickiest part of software development. We use [this](https://towardsdatascience.com/choosing-the-right-database-in-a-system-design-interview-b8af9c6dc525) article from Deeksha kaul. Our data needs are similar to amazon and olx. For the community part in our project data needs are similar to facebook. Taking account of both aspects, the elasticSearch database is most appropriate for our data needs. But for taking account that we don&#39;t know much about development in ElasticSearch we will use MogoDB a document DB in our prototype development and later if possible we slowly shift toward Elasticsearch DB.
 
