@@ -15,6 +15,7 @@ import { Provider } from "react-redux";
 import store from "../redux/store";
 import Menu from "./Menu";
 import Home from "./Home"
+import UploadBooks from "./UploadBook";
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -136,6 +137,7 @@ export default function Header(props) {
               <Route exact path="/profile" component={Profile} />
               <Route exact path="/mybooks" component={MyBooks} />
               <Route exact path = "/" component = {Home} />
+              <Route exact path = "/upload" component = {UploadBooks} />
             </Switch>
           </Provider>
         </main>

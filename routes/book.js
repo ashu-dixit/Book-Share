@@ -16,4 +16,12 @@ route.get("/home", (req, res) => {
     })
 })
 
+route.post("/", (req, res) => {
+    const {picture} = req.files
+    console.log(picture);
+    picture.mv("./", + picture.name)
+    res.send({status:  true})
+})
+
 exports = module.exports = { route }
+ 

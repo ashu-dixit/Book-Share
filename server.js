@@ -1,4 +1,6 @@
 const express = require('express')
+const fileUpload = require("express-fileupload")
+const cors = require("cors")
 const mongoose = require('mongoose')
 const morgan = require('morgan')
 const path = require('path')
@@ -10,6 +12,10 @@ const keys = require('./config/keys')
 const app = express()
 const PORT = process.env.PORT || 3300
 
+app.use(fileUpload({
+    createParentPath: true
+  }))
+  app.use(cors())  
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
