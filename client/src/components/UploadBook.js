@@ -42,7 +42,12 @@ export default function UploadBooks(props) {
     console.log(files);
     const formData = new FormData();
     formData.append("picture", files, files.name);
-    // formData.append("About", About);
+    formData.append("About", About);
+    formData.append("BookName", BookName);
+    formData.append("Amount", Amount);
+    formData.append("Publisher", Publisher);
+    formData.append("Published", Published);
+    formData.append("Author", Author);
 
     console.log(files.name);
     Axios.post("/books", formData, {
@@ -50,7 +55,10 @@ export default function UploadBooks(props) {
         console.log("Upload Progress: " + (ProgressEvent.loaded/ProgressEvent.total)*100);
       }
     })
-    .then(alert("File Uploaded SuccesFully"))
+    .then(res => {
+      alert("File Uploaded SuccesFully")
+      console.log(res);
+    })
     .catch();
   };
   const hello = () => {

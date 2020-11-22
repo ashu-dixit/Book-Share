@@ -27,6 +27,10 @@ const Book = new Schema({
       type: String,
     },
   },
+  Picture:{ 
+      type: Buffer, 
+      required: String 
+  } 
 });
 
 const Books = mongoose.model("Books", Book);

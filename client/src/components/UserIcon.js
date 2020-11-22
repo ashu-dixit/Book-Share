@@ -8,7 +8,9 @@ function UserIcon(props) {
   const data = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const loginWith = () => {
-    Axios.get("/login/google");
+    Axios.get("/login/google")
+      .then()
+      .catch((err) => alert(err));
   };
   const [anchorEl, setAnchorEl] = React.useState(null);
 
