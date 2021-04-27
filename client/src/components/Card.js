@@ -44,7 +44,7 @@ export default function BookCard(props) {
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
-    console.log(props.picture);
+    console.log(props);
     setExpanded(!expanded);
   };
 
@@ -94,7 +94,7 @@ export default function BookCard(props) {
           </IconButton>
         </CardActions>
       </Card>
-      <img height="100px" width="100px" src={"data:image/jpg;base64," + props.picture} />
+      <img height="100px" width="100px" src={"data:image/jpg;" + props.picture} />
     </div>
   );
 }

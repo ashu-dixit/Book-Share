@@ -24,6 +24,8 @@ route.get("/home", (req, res) => {
 });
 
 route.post("/", (req, res) => {
+
+  console.log(req.files.picture);
   if (req.user) {
     Books.insertMany({
       UserID: req.user._id,
@@ -34,7 +36,7 @@ route.post("/", (req, res) => {
         PublishDate: req.body.Published,
         About: req.body.About,
       },
-      Picture: new Buffer.from(req.files.picture.data, 'base64'),
+      Picture: req.files.picture,
     }).then((data) => res.send(data))
     .catch(err => console.log(err));
   } else {

@@ -21,6 +21,7 @@ export default function Home(props) {
           name={book.BookName}
           about={book.Description.About}
           date = {book.Date}
+          picture={book.picture}
         ></BookCard>
       ))}
     </div>
