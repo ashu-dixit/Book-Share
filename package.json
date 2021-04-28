@@ -1,37 +1,47 @@
 {
-    "name": "book-share",
-    "version": "1.0.0",
-    "description": "",
-    "main": "server.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "node server.js",
-        "server": "nodemon server.js",
-        "client": "cd client && npm start",
-        "dev": "concurrently --name 'server,client' --prefix-colors 'red,green' \" nodemon server.js\" \"npm run client\""
-    },
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-        "concurrently": "^5.3.0",
-        "cookie-session": "^1.4.0",
-        "cors": "^2.8.5",
-        "express": "^4.17.1",
-        "express-fileupload": "^1.2.0",
-        "firebase": "^8.0.2",
-        "google-auth-library": "^6.1.3",
-        "gridfs-stream": "^1.1.1",
-        "method-override": "^3.0.0",
-        "mongoose": "^5.10.14",
-        "morgan": "^1.10.0",
-        "multer": "^1.4.2",
-        "multer-gridfs-storage": "^4.2.0",
-        "nodemon": "^2.0.6",
-        "passport": "^0.4.1",
-        "passport-google-oauth": "^2.0.0",
-        "react-redux": "^7.2.2"
-    },
-    "devDependencies": {
-        "eslint-loader": "^4.0.2"
-    }
+  "name": "book-share",
+  "version": "1.0.0",
+  "description": "![](RackMultipart20201031-4-16iqwhj_html_27eb9ee46ab3d18f.png)",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "cd client && npm start",
+    "dev": "concurrently --name 'server,client' --prefix-colors 'red,green' \" nodemon server.js\" \"npm run client\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^5.3.0",
+    "cookie-session": "^1.4.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.0",
+    "firebase": "^8.0.2",
+    "google-auth-library": "^6.1.3",
+    "gridfs-stream": "^1.1.1",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.10.14",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.2",
+    "multer-gridfs-storage": "^4.2.0",
+    "nodemon": "^2.0.6",
+    "passport": "^0.4.1",
+    "passport-google-oauth": "^2.0.0",
+    "react-redux": "^7.2.2"
+  },
+  "devDependencies": {
+    "eslint-loader": "^4.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ashu-dixit/Book-Share.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ashu-dixit/Book-Share/issues"
+  },
+  "homepage": "https://github.com/ashu-dixit/Book-Share#readme"
 }

@@ -8,7 +8,7 @@ import {
   TextField,
 } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
-import React from "react";
+import React,{useState} from "react";
 import Axios from "axios";
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,36 +28,58 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function UploadBooks(props) {
-  const [files, setFiles] = React.useState([]);
-  const [BookName, setBookName] = React.useState([]);
-  const [Amount, setAmount] = React.useState([]);
-  const [Author, setAuthor] = React.useState([]);
-  const [Publisher, setPublisher] = React.useState([]);
-  const [About, setAbout] = React.useState([]);
-  const [Published, setPublished] = React.useState([]);
+  
+  const [formData, setFormData] = useState(
+    {
+       files: '',
+       BookName: '',
+       Amount: '',
+       Author: '',
+       Publisher: '',
+       About: '',
+       Published: ''
+    }
+  );
 
   const classes = useStyles();
-  const Oninputchange = (event) => {};
-  const onSubmit = (event) => {
-    console.log(files);
-    const formData = new FormData();
-    formData.append("picture", files, files.name);
-    formData.append("About", About);
-    formData.append("BookName", BookName);
-    formData.append("Amount", Amount);
-    formData.append("Publisher", Publisher);
-    formData.append("Published", Published);
-    formData.append("Author", Author);
+  // const [displaysocialinput, togglesocialinput] = useState(false);
 
-    console.log(files.name);
-    Axios.post("/books", formData, {
+  const {
+    files,
+    BookName,
+    Amount,
+    Author,
+    Publisher,
+    About,
+    Published
+} = formData;
+
+  const onChange = e => {
+    setFormData({ ...formData, [e.target.name]: e.target.value});
+}
+
+const handledate = e => {
+  setFormData({ ...formData, Published: e.target.valueAsDate});
+}
+
+const handlePhoto = (e) => {
+  console.log(e.target.files[0]);
+  setFormData({ ...formData, files: e.target.files[0]});
+}
+  // const Oninputchange = (event) => {};
+  const onSubmit = (e) => {
+    e.preventDefault();
+    // console.log(files);
+    console.log(formData);
+    
+    Axios.post("/books",formData, {
       onUploadProgress: ProgressEvent => {
         console.log("Upload Progress: " + (ProgressEvent.loaded/ProgressEvent.total)*100);
       }
     })
     .then(res => {
       alert("File Uploaded SuccesFully")
-      console.log(res);
+      console.log(res.body);
     })
     .catch();
   };
@@ -77,8 +99,9 @@ export default function UploadBooks(props) {
           <Grid item xs>
             <TextField
               required
-              id="BookName"
+              name="BookName"
               label="Book Name"
+              value={BookName}
               variant="outlined"
               startAdornment={
                 <InputAdornment position="start">Rs.</InputAdornment>
@@ -86,7 +109,7 @@ export default function UploadBooks(props) {
               InputLabelProps={{
                 shrink: true,
               }}
-              onChange={(e) => setBookName(e.target.value)}
+              onChange={ e => onChange(e)}
             />
           </Grid>
           <Grid item xs>
@@ -100,51 +123,57 @@ export default function UploadBooks(props) {
                   <InputAdornment position="start">Rs.</InputAdornment>
                 }
                 labelWidth={60}
-                onChange={(e) => setAmount(e.target.value)}
+                name="Amount"
+                value={Amount}
+                onChange={ e => onChange(e)}
               />
             </FormControl>
           </Grid>
           <Grid item xs>
             <TextField
               required
-              id="Author"
+              name="Author"
               label="Author's Name"
+              value={Author}
               variant="outlined"
               InputLabelProps={{
                 shrink: true,
               }}
-              onChange={(e) => setAuthor(e.target.value)}
+              onChange={ e => onChange(e)}
             />
           </Grid>
           <Grid item xs>
             <TextField
-              id="Publisher"
+              name="Publisher"
               label="Publisher"
+              value={Publisher}
               defaultValue=""
               variant="outlined"
               InputLabelProps={{
                 shrink: true,
               }}
-              onChange={(e) => setPublisher(e.target.value)}
+              onChange={ e => onChange(e)}
             />
           </Grid>
           <Grid item xs>
             <TextField
-              id="date"
+              name="date"
               label="Published on"
+              value={Published}
               type="date"
               className={classes.textField}
               variant="outlined"
               InputLabelProps={{
                 shrink: true,
               }}
-              onChange={(e) => setPublished(e.target.valueAsDate)}
+              onChange={handledate}
             />
           </Grid>
           <Grid item xs>
             <TextField
-              id="About"
+              name="About"
               label="About"
+              value={About}
               multiline
               rows={4}
               defaultValue=""
@@ -152,7 +181,22 @@ export default function UploadBooks(props) {
               InputLabelProps={{
                 shrink: true,
               }}
-              onChange={(e) => setAbout(e.target.value)}
+              onChange={ e => onChange(e)}
+            />
+          </Grid>
+          <Grid item xs>
+            <TextField
+              name="About"
+              label="About"
+              value={About}
+              multiline
+              rows={4}
+              defaultValue=""
+              variant="outlined"
+              InputLabelProps={{
+                shrink: true,
+              }}
+              onChange={ e => onChange(e)}
             />
           </Grid>
           <Grid item xs>
@@ -161,8 +205,8 @@ export default function UploadBooks(props) {
               <input
                 type="file"
                 name="picture"
-                hidden
-                onChange={(e) => setFiles(e.target.files[0])}
+                value={files[0]}
+                onChange={e => handlePhoto(e)}
               />
             </Button>
           </Grid>

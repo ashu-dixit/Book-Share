@@ -1,5 +1,19 @@
 const route = require("express").Router();
 const Books = require("../models/Books");
+const multer = require('multer');
+
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'images')
+  },
+  
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + path.extname(file.originalname))
+  }
+})
+ 
+var upload = multer({ storage: storage })
+
 route.get("/", (req, res) => {
 
   if (!req.user) {
@@ -23,20 +37,21 @@ route.get("/home", (req, res) => {
     });
 });
 
-route.post("/", (req, res) => {
+route.post("/",upload.single('picture'), (req, res) => {
 
-  console.log(req.files.picture);
+  console.log(req.body);
   if (req.user) {
     Books.insertMany({
       UserID: req.user._id,
-      BookName: req.body.BookName,
+      // BookName: req.body.BookName,
+      BookName:req.body.BookName,
       Description: {
         Amount: req.body.Amount,
         Publisher: req.body.Publisher,
         PublishDate: req.body.Published,
         About: req.body.About,
       },
-      Picture: req.files.picture,
+      Picture: req.file.filename,  
     }).then((data) => res.send(data))
     .catch(err => console.log(err));
   } else {

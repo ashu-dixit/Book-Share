@@ -17,11 +17,11 @@ export default function Home(props) {
     <div>
       {bookList.map((book) => (
         <BookCard
-          key={book.BookName}
-          name={book.BookName}
-          about={book.Description.About}
-          date = {book.Date}
-          picture={book.picture}
+          // key={book.BookName}
+          // name={book.BookName}
+          // about={book.Description.About}
+          // date = {book.Date}
+          // picture={book.picture}
         ></BookCard>
       ))}
     </div>

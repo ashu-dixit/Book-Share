@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+
 const Book = new Schema({
   UserID: {
     type: mongoose.Schema.Types.ObjectId,
@@ -27,7 +28,9 @@ const Book = new Schema({
       type: String,
     },
   },
-  Picture:Object
+  Picture: {
+    type: String,
+  }
 });
 
 const Books = mongoose.model("Books", Book);
